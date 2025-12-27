@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WhatsApp Chat Animation</title>
+
+<style>
+  body {
+    background: #ece5dd;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+  }
+
+  .chat-box {
+    width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .message {
+    max-width: 75%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .received {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    align-self: flex-start;
+  }
+
+  .sent {
+    background: #dcf8c6;
+    margin-left: auto;
+    align-self: flex-end;
+  }
+
+  .buttons {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  button {
+    padding: 8px 20px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="chat-box" id="chat">
+  <div class="message received">
+    Do u msg me?
+  </div>
+
+  <div class="buttons" id="buttons">
+    <button onclick="yesMsg()">Yes</button>
+    <button onclick="noMsg()">No</button>
+  </div>
+</div>
+
+<script>
+  function yesMsg() {
+    removeButtons();
+    setTimeout(() => {
+      addMessage("Yes, I will message you 😊", "sent");
+    }, 800);
+  }
+
+  function noMsg() {
+    removeButtons();
+    setTimeout(() => {
+      addMessage("Sorry, I can't 😔", "sent");
+    }, 800);
+  }
+
+  function addMessage(text, type) {
+    const msg = document.createElement("div");
+    msg.className = "message " + type;
+    msg.innerText = text;
+    document.getElementById("chat").appendChild(msg);
+  }
+
+  function removeButtons() {
+    document.getElementById("buttons").remove();
+  }
+</script>
+
+</body>
+</html>
